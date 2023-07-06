@@ -1,10 +1,10 @@
 const express = require('express')
-const reviewsRouter = express.Router()
+const Router = express.Router()
 
-reviewsRouter.get('/health', (request, response) => {
-  response.send('this is the api response')
+Router.get('/', (req, res) => {
+  res.send('the server works')
 })
 
 
 
-module.exports = reviewsRouter
+module.exports = Router
