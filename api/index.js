@@ -1,7 +1,8 @@
 const express = require('express')
 const Router = express.Router()
 
-Router.get('/', (req, res) => {
+
+Router.get('/test', (req, res) => {
   res.send('the server works')
 })
 
