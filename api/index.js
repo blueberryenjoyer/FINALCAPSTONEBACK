@@ -2,9 +2,13 @@ const express = require('express')
 const Router = express.Router()
 
 
-Router.get('/test', (req, res) => {
-  res.send('the server works')
-})
+Router.use("/", require("./health"));
+Router.use("/users", require("./users"));
+Router.use("/cats", require("./cats"));
+Router.use("/reviews", require("./reviews"));
+
+
+
 
 
 
