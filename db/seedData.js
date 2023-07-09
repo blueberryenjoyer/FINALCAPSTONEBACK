@@ -61,7 +61,7 @@ CREATE TABLE reviews (
 async function createInitialUsers() {
     try {
         console.log("creating users"); //name password email admin
-        await createUser("userlouis", "pwlol", "louis@gmail.com", false);
+        await createUser("asdfasdfsdafs", "pwlol", "louis@gmail.com", false);
         await createUser("userwilliam", "pwlol", "william@gmail.com", false);
         await createUser("userfrank", "pwlol", "frank@gmail.com", false);
         await createUser("usermehmet", "kebab", "mehmet@gmail.com", false);
@@ -90,13 +90,10 @@ async function createInitialReviews() {
     try {
         console.log("creating reviews");
         //structure is content, score, user_id, cat_id
-        //content means the actual review text
-        //'my kids watch this' is 10/10, reviewed by user1 which is userlouis, and it reviews review1 which is tom (default tom)
-        //note: creates errors. the reference is broken somehow.
         await createReview("ah yes my kids watch this", 7, 1, 1);
         await createReview("why did he shoot jerry with a rifle? that is VERY rude", 0, 3, 2);
         await createReview("i hope tom graduates and lands a well-paying job", 7, 3, 3);
-        await createReview("i put her in charge of my mars colony and she annexed the martian kingdom", 10, 5, 4); //10/10, mehmet, neco arc
+        await createReview("i put her in charge of my mars colony and she annexed the martian kingdom", 10, 4, 4); //10/10, user4 aka mehmet, cat4 aka neco arc
 
     } catch (error) {
         throw error;
