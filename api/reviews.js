@@ -1,17 +1,16 @@
 const express = require("express");
 const Router = express.Router();
-//const { getAllReviews } = require("../db/getData");
+const { getAllReviews } = require("../db/getData");
 
-Router.get("/", async (req, res) => { //working, thanks ed
-    res.send('reviews test response')
+Router.get("/", async (req, res) => {
 
-    // try {
-    //     const allReviews = await getAllReviews();
-    //     res.send(allReviews);
+    try {
+        const allReviews = await getAllReviews();
+        res.send(allReviews);
 
-    // } catch (error) {
-    //     throw error;
-    // }
+    } catch (error) {
+        throw error;
+    }
 });
 
 
