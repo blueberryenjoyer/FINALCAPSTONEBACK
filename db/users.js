@@ -50,10 +50,30 @@ async function getUserByName(name) {
     }
 }
 
+async function getUserById(number) {
+    try {
+        const data = await client.query(
+            `
+      SELECT *
+      FROM users
+      WHERE id='${number}'
+   
+    `,
+        );
+
+        return data.rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+
 
 
 module.exports = {
     createUser,
     getAllUsers,
-    getUserByName
+    getUserByName,
+    getUserById
 };

@@ -8,7 +8,7 @@ Router.use("/cats", require("./cats"));
 Router.use("/reviews", require("./reviews"));
 Router.use("/register", require("./register"));
 Router.use("/user", require("./getUserByName"));
-
+Router.use("/userid", require("./getUserById"));
 
 
 
