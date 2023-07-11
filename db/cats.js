@@ -17,7 +17,23 @@ async function createCat(name, description, dangerous) {
   }
 }
 
+async function getAllCats() {
+  try {
+    const data = await client.query(
+      `
+      SELECT *
+      FROM cats;
+    `
+    );
+
+    return data.rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 
 module.exports = {
   createCat,
+  getAllCats
 };

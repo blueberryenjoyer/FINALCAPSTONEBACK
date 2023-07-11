@@ -17,6 +17,22 @@ async function createReview(content, score, user_id, cat_id) {
     }
 }
 
+async function getAllReviews() {
+    try {
+        const data = await client.query(
+            `
+        SELECT *
+        FROM reviews;
+      `
+        );
+
+        return data.rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     createReview,
+    getAllReviews
 };

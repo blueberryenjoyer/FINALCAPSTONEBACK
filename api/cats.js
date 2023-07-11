@@ -1,6 +1,6 @@
 const express = require("express");
 const Router = express.Router();
-const { getAllCats } = require("../db/getData");
+const { getAllCats } = require("../db/cats");
 
 Router.get("/", async (req, res) => { //working, thanks ed
 

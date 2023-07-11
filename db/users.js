@@ -17,8 +17,25 @@ async function createUser(name, password, email, isAdmin) {
     }
 }
 
+async function getAllUsers() {
+    try {
+        const data = await client.query(
+            `
+      SELECT *
+      FROM users;
+   
+    `
+        );
+
+        return data.rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
 
 
 module.exports = {
     createUser,
+    getAllUsers
 };

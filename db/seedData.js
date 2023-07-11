@@ -1,8 +1,7 @@
 const client = require("./client");
-const { createUser } = require("./users");
-const { createCat } = require("./cats");
-const { createReview } = require("./reviews");
-const { getAllUsers, getAllCats, getAllReviews } = require("./getData");
+const { createUser, getAllUsers } = require("./users");
+const { createCat, getAllCats } = require("./cats");
+const { createReview, getAllReviews } = require("./reviews");
 
 //cats? omo
 //this is by far the most important, centralizing file. creates the tables.
