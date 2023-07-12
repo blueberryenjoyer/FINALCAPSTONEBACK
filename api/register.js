@@ -2,7 +2,7 @@ const express = require("express");
 const Router = express.Router();
 const { createUser } = require("../db/users");
 
-Router.get("/", async (req, res) => {
+Router.post("/", async (req, res) => { //register does not automatically log in
 
     try {
         const userData = req.body

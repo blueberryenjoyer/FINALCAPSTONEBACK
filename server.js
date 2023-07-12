@@ -4,6 +4,8 @@ const PORT = 4343
 
 //this is the API. run nodemon server.js or node server.js to run the api. NOT THE DB
 
+const jwt = require("jsonwebtoken")
+
 const morgan = require("morgan");
 app.use(morgan("dev"))
 
