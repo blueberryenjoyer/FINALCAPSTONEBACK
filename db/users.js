@@ -21,8 +21,9 @@ async function getAllUsers() {
     try {
         const data = await client.query(
             `
-      SELECT *
-      FROM users;
+      SELECT name, email, is_admin
+      FROM users
+      ;
    
     `
         );
@@ -37,7 +38,7 @@ async function getUserByName(name) {
     try {
         const data = await client.query(
             `
-      SELECT *
+      SELECT name, email, is_admin
       FROM users
       WHERE name='${name}'
    
@@ -54,7 +55,7 @@ async function getUserById(number) {
     try {
         const data = await client.query(
             `
-      SELECT *
+      SELECT name, email, is_admin
       FROM users
       WHERE id='${number}'
    
