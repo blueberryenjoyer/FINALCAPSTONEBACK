@@ -32,8 +32,80 @@ async function getAllCats() {
   }
 }
 
+async function getCatByName(name) {
+  try {
+    const data = await client.query(
+      `
+    SELECT *
+    FROM cats
+    WHERE name='${name}'
+ 
+  `,
+    );
+
+    return data.rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getCatById(number) {
+  try {
+    const data = await client.query(
+      `
+    SELECT *
+    FROM cats
+    WHERE id='${number}'
+ 
+  `,
+    );
+
+    return data.rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateCatById(number, name, description, dangerous) {
+  try {
+    const data = await client.query(
+      `
+
+    UPDATE cats
+    SET name = '${name}', description= '${description}', dangerous= '${dangerous}'
+    WHERE id='${number}';
+ 
+  `,
+    );
+    return data.rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function deleteCatById(number) {
+  try {
+    const data = await client.query(
+      `
+    DELETE 
+    FROM cats
+    WHERE id='${number}'
+ 
+  `,
+    );
+
+    return data.rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
 
 module.exports = {
   createCat,
-  getAllCats
+  getAllCats,
+  getCatByName,
+  getCatById,
+  updateCatById,
+  deleteCatById,
 };

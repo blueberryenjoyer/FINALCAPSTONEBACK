@@ -23,7 +23,7 @@ Router.post("/", async (req, res) => { //this massive ridiculous code block chec
             }
         }
         else {
-            res.send("error username is completely broken, this messsage shouldnt appear ever")
+            res.send("error username is completely broken, this message shouldnt appear ever")
         }
     }
     else {
