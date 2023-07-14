@@ -26,7 +26,7 @@ async function createTables() {
         await client.query(`
       CREATE TABLE users (
       id SERIAL PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
+      name VARCHAR(255) UNIQUE NOT NULL,
       password VARCHAR(255) NOT NULL,
       email VARCHAR(255) UNIQUE NOT NULL,
       is_admin BOOLEAN DEFAULT false
@@ -60,10 +60,10 @@ CREATE TABLE reviews (
 async function createInitialUsers() {
     try {
         console.log("creating users"); //name password email admin
-        await createUser("asdfasdfsdafs", "pwlol", "louis@gmail.com", false);
-        await createUser("userwilliam", "pwlol", "william@gmail.com", false);
-        await createUser("userfrank", "pwlol", "frank@gmail.com", false);
-        await createUser("usermehmet", "kebab", "mehmet@gmail.com", false);
+        await createUser("louis", "pwlol", "louis@gmail.com", false);
+        await createUser("william", "pwlol", "william@gmail.com", false);
+        await createUser("frank", "pwlol", "frank@gmail.com", false);
+        await createUser("mehmet", "kebab", "mehmet@gmail.com", false);
 
     } catch (error) {
         throw error;

@@ -3,11 +3,15 @@ const Router = express.Router();
 const jwt = require("jsonwebtoken");
 
 Router.get("/", (req, res) => {
-
+    const data = {
+        name: req.body.name,
+        password: req.body.password,
+    }
+    console.log(data.password)
     try {
         const token = req.header("tokenHeaderKey");
 
-        const verified = jwt.verify(token, 'secretShrek');
+        const verified = jwt.verify(token, `secretShrek ${data.name} ${data.password}`);
         if (verified) {
             return res.send("Successfully Verified");
         } else {
