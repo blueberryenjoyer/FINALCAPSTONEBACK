@@ -18,7 +18,7 @@ Router.post("/", async (req, res) => { //this code sucks
 
         if (dbName == data.name) {
             if (dbPassword == data.password) {
-                const token = jwt.sign(data, `secretShrek ${data.name} ${data.password}`);
+                const token = jwt.sign(data, `secretShrek ${data.name}`);
                 res.json(token);
             }
             else {

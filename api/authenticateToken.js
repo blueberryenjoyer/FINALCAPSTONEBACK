@@ -4,14 +4,12 @@ const jwt = require("jsonwebtoken");
 
 Router.get("/", (req, res) => {
     const data = {
-        name: req.body.name,
-        password: req.body.password,
+        name: req.body.name
     }
-    console.log(data.password)
     try {
         const token = req.header("tokenHeaderKey");
 
-        const verified = jwt.verify(token, `secretShrek ${data.name} ${data.password}`);
+        const verified = jwt.verify(token, `secretShrek ${data.name}`);
         if (verified) {
             return res.send("Successfully Verified");
         } else {
