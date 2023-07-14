@@ -7,7 +7,7 @@ Router.patch("/", async (req, res) => {
     try {
         const catData = req.body
         console.log(catData)
-        const regRes = await updateCatById(catData.number, catData.name, catData.description, catData.dangerous)
+        const regRes = await updateCatById(catData.number, catData.name, catData.description, catData.dangerous, catData.uploader)
         res.send(regRes);
 
     } catch (error) {

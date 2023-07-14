@@ -1,14 +1,14 @@
 const client = require("./client"); //creates cats (effectively translates to products)
 
-async function createCat(name, description, dangerous) {
+async function createCat(name, description, dangerous, uploader) {
   try {
     const data = await client.query(
       `
-    INSERT INTO cats(name, description, dangerous)
-    VALUES($1, $2, $3)
+    INSERT INTO cats(name, description, dangerous, uploader)
+    VALUES($1, $2, $3, $4)
     RETURNING *
     `,
-      [name, description, dangerous]
+      [name, description, dangerous, uploader]
     );
 
     return data.rows[0];
@@ -66,13 +66,13 @@ async function getCatById(number) {
   }
 }
 
-async function updateCatById(number, name, description, dangerous) {
+async function updateCatById(number, name, description, dangerous, uploader) {
   try {
     const data = await client.query(
       `
 
     UPDATE cats
-    SET name = '${name}', description= '${description}', dangerous= '${dangerous}'
+    SET name = '${name}', description= '${description}', dangerous= '${dangerous}, uploader= '${uploader}'
     WHERE id='${number}';
  
   `,

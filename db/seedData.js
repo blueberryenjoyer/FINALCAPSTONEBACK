@@ -38,7 +38,8 @@ async function createTables() {
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         description VARCHAR(255) NOT NULL,
-        dangerous BOOLEAN DEFAULT false
+        dangerous BOOLEAN DEFAULT false,
+        uploader INTEGER REFERENCES users(id)
 
 )`);
 
@@ -60,7 +61,7 @@ CREATE TABLE reviews (
 async function createInitialUsers() {
     try {
         console.log("creating users"); //name password email admin
-        await createUser("louis", "pwlol", "louis@gmail.com", false);
+        await createUser("developer", "dev", "dev@gmail.com", true);
         await createUser("william", "pwlol", "william@gmail.com", false);
         await createUser("frank", "pwlol", "frank@gmail.com", false);
         await createUser("mehmet", "kebab", "mehmet@gmail.com", false);
@@ -72,12 +73,12 @@ async function createInitialUsers() {
 
 async function createInitialCats() {
     try {
-        console.log("creating cats");//name description dangerous
-        await createCat("tom", "chases jerry", false);
-        await createCat("tom with M4A4", "this tom caught jerry, but paid a price", true);
-        await createCat("tom at FSA", "having caught jerry, this tom seeks education and employment", false);
-        await createCat("neco arc", "a dubious little creature", true);
-        await createCat("simba", "i didnt watch the lion king", false);
+        console.log("creating cats");//name description dangerous uploader
+        await createCat("tom", "chases jerry", false, 1);
+        await createCat("tom with M4A4", "this tom caught jerry, but paid a price", true, 1);
+        await createCat("tom at FSA", "having caught jerry, this tom seeks education and employment", false, 1);
+        await createCat("neco arc", "a dubious little creature", true, 1);
+        await createCat("simba", "i didnt watch the lion king", false, 1);
 
 
     } catch (error) {
