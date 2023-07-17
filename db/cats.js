@@ -66,18 +66,19 @@ async function getCatById(number) {
   }
 }
 
-async function updateCatById(number, name, description, dangerous, uploader) {
+async function updateCatById(id, name, description, dangerous) {
   try {
     const data = await client.query(
       `
 
     UPDATE cats
-    SET name = '${name}', description= '${description}', dangerous= '${dangerous}, uploader= '${uploader}'
-    WHERE id='${number}';
+    SET name = '${name}', description= '${description}', dangerous= '${dangerous}'
+    WHERE id='${id}';
  
   `,
     );
-    return data.rows;
+    return data.rows
+    //this actually returns garbage for some reason
   } catch (error) {
     throw error;
   }
