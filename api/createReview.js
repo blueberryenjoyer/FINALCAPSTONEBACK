@@ -4,7 +4,7 @@ const { createReview, getExistingReviews } = require("../db/reviews");
 const { getUserByName } = require("../db/users");
 const jwt = require("jsonwebtoken");
 
-Router.post("/", async (req, res, next) => {
+Router.post("/", async (req, res) => {
 
     try {
         const reviewData = req.body

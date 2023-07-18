@@ -1,14 +1,14 @@
 const client = require("./client"); //creates users
 
-async function createUser(name, password, email) {
+async function createUser(name, password, email, is_admin) {
     try {
         const data = await client.query(
             `
-    INSERT INTO users(name, password, email)
-    VALUES($1, $2, $3)
+    INSERT INTO users(name, password, email, is_admin)
+    VALUES($1, $2, $3, $4)
     RETURNING *
     `,
-            [name, password, email]
+            [name, password, email, is_admin]
         );
 
         return data.rows[0];
@@ -68,6 +68,31 @@ async function getUserById(number) {
     }
 }
 
+async function getAdmin(name) {
+    try {
+        console.log('did we get to getadmin?')
+        const data = await client.query(
+            `
+      SELECT is_admin
+      FROM users
+      WHERE name='${name}'
+   
+    `,
+        );
+        console.log('LOOK FOR THIS LINE')
+        const hairball = data.rows
+        console.log(hairball)
+        const furball = hairball[0]
+        console.log(furball)
+        console.log(furball.is_admin)
+        console.log('boolean is returning')
+        return furball.is_admin
+    } catch (error) {
+        console.log('error finding user, assume user doesnt exist and return false')
+        return false
+    }
+}
+
 
 
 
@@ -76,5 +101,6 @@ module.exports = {
     createUser,
     getAllUsers,
     getUserByName,
-    getUserById
+    getUserById,
+    getAdmin
 };

@@ -63,7 +63,6 @@ async function createInitialUsers() {
         console.log("creating users"); //name password email admin
         await createUser("developer", "dev", "dev@fakemail.com", true);
         await createUser("william", "pwlol", "william@fakemail.com", false);
-        await createUser("frank", "pwlol", "frank@fakemail.com", false);
         await createUser("mehmet", "kebab", "mehmet@turkiyemail.com", false);
         await createUser("arcueid", "buranyuu", "tsukihime@notes.llc", true);
 
@@ -78,7 +77,7 @@ async function createInitialCats() {
         await createCat("tom", "chases jerry", false, 1);
         await createCat("tom with M4A4", "this tom caught jerry, but paid a price", true, 1);
         await createCat("tom at FSA", "having caught jerry, this tom seeks education and employment", false, 1);
-        await createCat("neco arc", "a dubious little creature", true, 5);
+        await createCat("neco arc", "a dubious little creature", true, 4);
         await createCat("simba", "i didnt watch the lion king", false, 1);
 
 
@@ -91,10 +90,14 @@ async function createInitialReviews() {
     try {
         console.log("creating reviews");
         //structure is content, score, user_id, cat_id
-        await createReview("ah yes my kids watch this", 7, 2, 1);
+        await createReview("ah yes my kids watch this cartoon", 7, 2, 1);
         await createReview("why did he shoot jerry with a rifle? that is VERY rude", 0, 2, 2);
+        await createReview("generally it is worse than the M4A1-S, but it looks like tom has a courage to play against the meta. i respect that.", 6, 1, 2);
         await createReview("i hope tom graduates and lands a well-paying job", 7, 2, 3);
-        await createReview("i put her in charge of my mars colony and she annexed the martian kingdom", 10, 4, 4); //10/10, user4 aka mehmet, cat4 aka neco arc
+        await createReview("web development is hard, tom! good luck!", 9, 3, 3);
+        await createReview("neco arc was the reason i chose cats instead of products. i have a neco arc stuffed animal.", 10, 1, 4);
+        await createReview("meow!", 10, 4, 4);
+        await createReview("i put her in charge of my mars colony and she conquered the martians", 10, 3, 4); //10/10, user3 aka mehmet, cat4 aka neco arc
 
     } catch (error) {
         throw error;

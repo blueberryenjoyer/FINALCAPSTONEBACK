@@ -2,13 +2,13 @@ const express = require("express");
 const Router = express.Router();
 const { getUserByName } = require("../db/users");
 
-Router.get("/", async (req, res) => {
+Router.get("/:userName", async (req, res) => {
 
     try {
 
-        const userData = req.body
+        const userData = req.params
         console.log(userData)
-        const foundUser = await getUserByName(userData.name);
+        const foundUser = await getUserByName(userData.userName);
         res.send(foundUser);
 
     } catch (error) {

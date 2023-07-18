@@ -80,6 +80,29 @@ and name='${username}'
     }
 }
 
+async function getUserReviews(username) {
+    try {
+        console.log('did we get to userreviews?')
+        console.log(username)
+        const data = await client.query(
+            `
+            select reviews.id, reviews.content, reviews.score, users.name, cats.catname
+from reviews
+inner join users on reviews.user_id=users.id
+inner join cats on reviews.cat_id=cats.id
+where name='${username}'
+;
+      `
+        );
+        console.log(data.rows)
+        console.log('did we get through userreviews?')
+
+        return data.rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
 
 
 
@@ -87,5 +110,6 @@ module.exports = {
     createReview,
     getAllReviews,
     fancyGetReviews,
-    getExistingReviews
+    getExistingReviews,
+    getUserReviews
 };

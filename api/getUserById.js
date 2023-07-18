@@ -2,13 +2,13 @@ const express = require("express");
 const Router = express.Router();
 const { getUserById } = require("../db/users");
 
-Router.get("/", async (req, res) => {
+Router.get("/:userId", async (req, res) => {
 
     try {
 
-        const userData = req.body
+        const userData = req.params
         console.log(userData)
-        const foundUser = await getUserById(userData.number);
+        const foundUser = await getUserById(userData.userId);
         res.send(foundUser);
 
     } catch (error) {

@@ -86,6 +86,7 @@ async function updateCatById(id, name, description, dangerous) {
 
 async function deleteCatById(number) {
   try {
+    console.log(number)
     const data = await client.query(
       `
     DELETE 
