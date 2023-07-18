@@ -1,6 +1,6 @@
 const client = require("./client"); //creates reviews
 
-async function createReview(content, score, user_id, cat_id) {
+async function createReview(content, score, user_id, cat_id) { //content, score, user_id, cat_id
     try {
         const data = await client.query(
             `
@@ -11,6 +11,7 @@ async function createReview(content, score, user_id, cat_id) {
             [content, score, user_id, cat_id]
         );
 
+        console.log('it shouldve created a review')
         return data.rows[0];
     } catch (error) {
         throw error;
@@ -54,7 +55,30 @@ async function fancyGetReviews(id) { //its working!! its working!!
 }
 
 
+async function getExistingReviews(catid, username) {
+    try {
+        console.log('did we get to existingreviews?')
+        console.log(catid)
+        console.log(username)
+        const data = await client.query(
+            `
+            select reviews.id, reviews.content, reviews.score, users.name, cats.catname
+from reviews
+inner join users on reviews.user_id=users.id
+inner join cats on reviews.cat_id=cats.id
+where cat_id='${catid}'
+and name='${username}'
+;
+      `
+        );
+        console.log(data.rows)
+        console.log('did we get through existingreviews?')
 
+        return data.rows;
+    } catch (error) {
+        throw error;
+    }
+}
 
 
 
@@ -62,5 +86,6 @@ async function fancyGetReviews(id) { //its working!! its working!!
 module.exports = {
     createReview,
     getAllReviews,
-    fancyGetReviews
+    fancyGetReviews,
+    getExistingReviews
 };
