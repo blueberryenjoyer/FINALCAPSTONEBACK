@@ -66,7 +66,7 @@ Router.patch("/", async (req, res) => {
             console.log('update broke at other verify(jwtverify)')
             return res.status(401).send(error);
         }
-        const regRes = await updateCatById(catData.id, catData.name, catData.description, catData.dangerous)
+        const regRes = await updateCatById(catData.id, catData.catname, catData.description, catData.dangerous)
         res.send(regRes);
 
     } catch (error) {

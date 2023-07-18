@@ -4,7 +4,7 @@ async function createCat(name, description, dangerous, uploader) {
   try {
     const data = await client.query(
       `
-    INSERT INTO cats(name, description, dangerous, uploader)
+    INSERT INTO cats(catname, description, dangerous, uploader)
     VALUES($1, $2, $3, $4)
     RETURNING *
     `,
@@ -72,7 +72,7 @@ async function updateCatById(id, name, description, dangerous) {
       `
 
     UPDATE cats
-    SET name = '${name}', description= '${description}', dangerous= '${dangerous}'
+    SET catname = '${name}', description= '${description}', dangerous= '${dangerous}'
     WHERE id='${id}';
  
   `,

@@ -36,7 +36,7 @@ async function createTables() { //usernames and emails are unique
         await client.query(`
       CREATE TABLE cats (
         id SERIAL PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
+        catname VARCHAR(255) NOT NULL,
         description VARCHAR(255) NOT NULL,
         dangerous BOOLEAN DEFAULT false,
         uploader INTEGER REFERENCES users(id)

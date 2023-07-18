@@ -54,7 +54,7 @@ Router.post("/", async (req, res, next) => {
 
 
 
-        const regRes = await createCat(catData.name, catData.description, catData.dangerous, uploaderId)
+        const regRes = await createCat(catData.catname, catData.description, catData.dangerous, uploaderId)
         res.send(regRes);
 
 
