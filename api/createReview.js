@@ -2,6 +2,7 @@ const express = require("express");
 const Router = express.Router();
 const { createReview, getExistingReviews } = require("../db/reviews");
 const { getUserByName } = require("../db/users");
+const { getCatById } = require("../db/cats");
 const jwt = require("jsonwebtoken");
 
 Router.post("/", async (req, res) => {
@@ -72,7 +73,22 @@ Router.post("/", async (req, res) => {
         } catch (error) {
             return res.status(422).send(error);
         }
-
+        try {
+            console.log('look here for invisible cat reviews')
+            const isitreal = await getCatById(reviewData.cat_id);
+            console.log(isitreal)
+            console.log([])
+            console.log('interesting')
+            if (isitreal.length == 0) {
+                console.log('its not a real cat! abort!!!')
+                throw new Error('this cat doesnt exist error')
+            }
+            else {
+                console.log('seems like a legit cat')
+            }
+        } catch (error) {
+            return res.status(422).send('this cat doesnt exist');
+        }
 
 
 
