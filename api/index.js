@@ -19,7 +19,8 @@ Router.use("/reviews", require("./reviews"));
 Router.use("/fancyreviews", require("./fancyReviews"));
 Router.use("/createreview", require("./createReview"));
 Router.use("/userreviews", require("./userReviews"));
-
+Router.use("/updatereview", require("./updateReview"));
+Router.use("/deletereview", require("./deleteReview"));
 
 
 

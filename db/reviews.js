@@ -104,6 +104,61 @@ where name='${username}'
 }
 
 
+async function updateReviewById(id, content, score) { //currently trying to input mehmet, should input 3
+    try {
+        const data = await client.query(
+            `
+  
+      UPDATE reviews
+      SET content = '${content}', score= '${score}'
+      WHERE id='${id}';
+   
+    `,
+        );
+        return data.rows
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function getReviewById(id) {
+    try {
+        console.log('here')
+        const data = await client.query(
+            `
+  
+      SELECT * FROM reviews
+      WHERE id=${id}
+      ;
+   
+    `,
+        );
+        return data.rows
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function deleteReviewById(number) {
+    try {
+        console.log('deleting a review')
+        console.log(number)
+        const data = await client.query(
+            `
+      DELETE 
+      FROM reviews
+      WHERE id='${number}'
+   
+    `,
+        );
+
+        return data.rows;
+    } catch (error) {
+        throw error;
+    }
+}
+
+
 
 
 module.exports = {
@@ -111,5 +166,8 @@ module.exports = {
     getAllReviews,
     fancyGetReviews,
     getExistingReviews,
-    getUserReviews
+    getUserReviews,
+    updateReviewById,
+    getReviewById,
+    deleteReviewById
 };
